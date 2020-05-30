@@ -9,7 +9,7 @@ namespace testWebASPdotNet.Controllers
 {
     public class HomeController : Controller
     {
-
+        
         public ActionResult Index()
         {
             return View();
@@ -21,6 +21,7 @@ namespace testWebASPdotNet.Controllers
             return res.ToString();
         }
         
+        // ListeLapins
         public ActionResult ListeLapins()
         {
             Vallee v = new Vallee();

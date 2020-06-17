@@ -1,0 +1,75 @@
+﻿
+/* - - - Titre - - - */
+.divTitreStudent {
+    display: inline-block;
+    padding: 2vh 0;
+    width: 100%;
+}
+.titleStudents {
+    font-weight: 300;
+    float: left;
+}
+.containerAddStudent {
+    float: right;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 1vw;
+}
+.addStudent {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.vTrait {
+    width: 5px;
+    height: 15px;
+    background-color: #47D886;
+    position: fixed;
+}
+.hTrait {
+    width: 15px;
+    height: 5px;
+    background-color: #47D886;
+    position: fixed;
+}
+
+
+.listeEleves {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+.cardEleve {
+    border: 1px solid #707070;
+    width: 90%;
+    margin: 1vh 0;
+    padding: 1em;
+}
+.row1CardEleve {
+    display: inline-block;
+    width: 100%;
+}
+.leftCard {
+    float: left;
+    display: flex;
+}
+.leftCard p {
+    padding: 0 .5vw;
+    font-weight: 300;
+}
+
+.rightCard {
+    float: right;
+    display: flex;
+}
+
+
+/* - - - Liste des notes - - - */
+.rowNote {
+    display: flex;
+    justify-content: space-around;
+}

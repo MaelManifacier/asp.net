@@ -1,0 +1,49 @@
+﻿@{
+    ViewBag.Title = "Students";
+}
+
+<div class="divTitreStudent">
+    <h5 class="titleStudents">@ViewBag.Title.ToUpper()</h5>
+    <div class="containerAddStudent">
+        <a class="addStudent" href="/Student/AddStudent">
+            <div class="vTrait"></div>
+            <div class="hTrait"></div>
+        </a>
+    </div>
+</div>
+
+<div class="listeEleves">
+    @foreach (var student in ViewBag.Students)
+    {
+    <div class="cardEleve">
+        <div class="row1CardEleve">
+            <div class="leftCard">
+                <p>@student.Nom.ToUpper()</p>
+                <p>@student.Prenom.ToUpper()</p>
+            </div>
+            <div class="rightCard">
+                <div>@student.Moyenne</div>
+                <div>@student.ClassId</div>
+            </div>
+        </div>
+        <hr style="margin: 0 0 2vh 0" />
+        <div class="listNotesCard">
+            @{
+                if (student.Notes != null)
+                {
+                    foreach (var note in student.Notes)
+                    {
+                        <div class="rowNote">
+                            <p>@note.Matiere</p>
+                            <p>@note.NoteEleve</p>
+                            <p>@note.Appreciation</p>
+                            <p>@note.DateNote.ToString("dd MMM yyyy")</p>
+                        </div>
+                    }
+                }
+            }
+        </div>
+    </div>
+    }
+</div>
+

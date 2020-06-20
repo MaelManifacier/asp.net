@@ -13,33 +13,35 @@ namespace GestionEleves.ApplicationWebMVC.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+          BusinessManager bm = BusinessManager.GetInstance();
+          List<Eleve> Eleves = bm.GetEleves();
+          return View();
         }
 
         public ActionResult Students()
         {
-            /*
-            // récupération du BusinessManager
-            BusinessManager bm = BusinessManager.GetInstance();
-            List<Eleve> Eleves = bm.GetEleves();
+          /*
+          // récupération du BusinessManager
+          BusinessManager bm = BusinessManager.GetInstance();
+          List<Eleve> Eleves = bm.GetEleves();
 
-            // conversion des eleves en EleveViewModel
-            List<EleveViewModel> elevesViewModels = new List<EleveViewModel>();
-            List<NoteViewModel> notesViewModelEleve = new List<NoteViewModel>();
-            foreach (var eleve in Eleves)
-            {
-                List<Note> notesEleve = bm.GetNotesByEleve(eleve.EleveId);
-                foreach (var note in notesEleve)
-                {
-                    notesViewModelEleve.Add(new NoteViewModel { Matiere = note.Matiere, NoteEleve = note.NoteEleve, Appreciation = note.Appreciation, DateNote = note.DateNote });
-                }
-                if(notesEleve != null)
-                {
-                    elevesViewModels.Add(new EleveViewModel { Nom = eleve.Nom, Prenom = eleve.Prenom, ClassId = eleve.ClassId, DateNaissance = eleve.DateNaissance, Notes = notesViewModelEleve });
-                } else
-                {
-                    elevesViewModels.Add(new EleveViewModel { Nom = eleve.Nom, Prenom = eleve.Prenom, ClassId = eleve.ClassId, DateNaissance = eleve.DateNaissance });
-                }
+          // conversion des eleves en EleveViewModel
+          List<EleveViewModel> elevesViewModels = new List<EleveViewModel>();
+          List<NoteViewModel> notesViewModelEleve = new List<NoteViewModel>();
+          foreach (var eleve in Eleves)
+          {
+              List<Note> notesEleve = bm.GetNotesByEleve(eleve.EleveId);
+              foreach (var note in notesEleve)
+              {
+                  notesViewModelEleve.Add(new NoteViewModel { Matiere = note.Matiere, NoteEleve = note.NoteEleve, Appreciation = note.Appreciation, DateNote = note.DateNote });
+              }
+              if(notesEleve != null)
+              {
+                  elevesViewModels.Add(new EleveViewModel { Nom = eleve.Nom, Prenom = eleve.Prenom, ClassId = eleve.ClassId, DateNaissance = eleve.DateNaissance, Notes = notesViewModelEleve });
+              } else
+              {
+                  elevesViewModels.Add(new EleveViewModel { Nom = eleve.Nom, Prenom = eleve.Prenom, ClassId = eleve.ClassId, DateNaissance = eleve.DateNaissance });
+              }
             }
             */
 

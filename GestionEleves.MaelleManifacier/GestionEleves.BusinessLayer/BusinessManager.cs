@@ -43,6 +43,12 @@ namespace GestionEleves.BusinessLayer
             return result;
         }
 
+        public Eleve GetEleve(int eleveId)
+        {
+          EleveQuery query = new EleveQuery(_contexte);
+          return query.GetEleveById(eleveId);
+        }
+
         public void AddEleve(Eleve e)
         {
             EleveQuery query = new EleveQuery(_contexte);
@@ -61,6 +67,29 @@ namespace GestionEleves.BusinessLayer
             return query.GetNotesByEleve(EleveID);
         }
 
-        #endregion
+    #endregion
+
+      #region "SearchEleve"
+
+      public List<Eleve> SearchEleve(String searchString)
+      {
+      List<Eleve> Eleves = new List<Eleve>();
+      EleveQuery query = new EleveQuery(_contexte);
+      Eleves = query.SearchEleve(searchString);
+
+      return Eleves;
+      }
+
+      #endregion
+
+    #region "Note"
+
+    public void AddNote(Note n)
+    {
+      NoteQuery query = new NoteQuery(_contexte);
+      query.AddNote(n);
     }
+
+    #endregion
+  }
 }

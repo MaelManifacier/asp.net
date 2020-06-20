@@ -60,5 +60,35 @@ namespace GestionEleves.BusinessLayer.Query
             return eleveAModifier;
         }
         #endregion
+
+    public List<Eleve> SearchEleve(String searchString)
+    {
+      List<Eleve> eleves = new List<Eleve>();
+
+      string[] words = searchString.Split(' ');
+      foreach(string word in words)
+      {
+        IEnumerable<Eleve> elevesNomQuery =
+        from eleve in _contexte.Eleves
+        where eleve.Nom == word
+        select eleve;
+        foreach(Eleve e in elevesNomQuery)
+        {
+          eleves.Add(e);
+        }
+
+        IEnumerable<Eleve> elevesPrenomQuery =
+        from eleve in _contexte.Eleves
+        where eleve.Prenom == word
+        select eleve;
+        foreach (Eleve e in elevesPrenomQuery)
+        {
+          eleves.Add(e);
+        }
+      }
+      return eleves;
+    }
+
+
     }
 }

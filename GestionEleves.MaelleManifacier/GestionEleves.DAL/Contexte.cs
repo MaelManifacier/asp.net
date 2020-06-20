@@ -17,7 +17,7 @@ namespace GestionEleves.DAL
 
         public DbSet<Note> Notes { get; set; }
 
-        public Contexte()
+        public Contexte() : base("name=ConnexionString")
         {
 
         }

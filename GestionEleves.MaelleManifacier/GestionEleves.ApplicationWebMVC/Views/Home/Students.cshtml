@@ -4,6 +4,12 @@
 
 <div class="divTitreStudent">
     <h5 class="titleStudents">@ViewBag.Title.ToUpper()</h5>
+    <div class="containerSearchStudents">
+      <form asp-controller="Home" asp-action="Students">
+        <input type="text" name="searchString"/>
+        <input type="submit" value="search"/>
+      </form>
+    </div>
     <div class="containerAddStudent">
         <a class="addStudent" href="/Student/AddStudent">
             <div class="vTrait"></div>
@@ -39,8 +45,12 @@
                             <p>@note.Appreciation</p>
                             <p>@note.DateNote.ToString("dd MMM yyyy")</p>
                         </div>
-                    }
-                }
+								}
+							}
+              else
+							{
+                <i>Pas de notes</i>
+							}
             }
         </div>
     </div>

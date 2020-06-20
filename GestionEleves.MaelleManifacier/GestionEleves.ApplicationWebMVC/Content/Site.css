@@ -116,6 +116,7 @@ footer {
     min-height: 60vh;
     padding: 1vh 1vw;
     border: 1px solid #707070;
+    overflow: scroll;
 }
 
 

@@ -148,13 +148,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Database.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Database_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>Database.mdf</DependentUpon>
-    </Content>
     <Content Include="gestionEleveDatabase.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

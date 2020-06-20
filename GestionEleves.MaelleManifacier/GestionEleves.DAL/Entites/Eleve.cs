@@ -22,5 +22,16 @@ namespace GestionEleves.DAL.Entites
 
         [Required]
         public int ClassId { get; set; }
-    }
+
+        override
+        public string ToString()
+        {
+          return $"EleveId : {this.EleveId}, Nom : {this.Nom}, Prenom : {this.Prenom}, DateNaissance : {this.DateNaissance.ToString()}, ClassId : {this.ClassId}";
+        }
+
+        public int GetId()
+        {
+          return this.EleveId;
+        }
+  }
 }

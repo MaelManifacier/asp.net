@@ -21,5 +21,13 @@ namespace GestionEleves.BusinessLayer.Query
         {
             return _contexte.Notes.Where(n => n.EleveId == EleveID).ToList();
         }
-    }
+
+        public void AddNote(Note n)
+        {
+          _contexte.Notes.Add(n);
+          _contexte.SaveChanges();
+        }
+
+
+  }
 }

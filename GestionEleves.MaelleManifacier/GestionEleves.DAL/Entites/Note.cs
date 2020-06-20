@@ -24,5 +24,14 @@ namespace GestionEleves.DAL.Entites
 
         [Required]
         public int EleveId { get; set; }
-    }
+
+        override
+        public string ToString()
+        {
+          return $"NoteId : {this.NoteId}, EleveId : {this.EleveId}, Matiere : {this.Matiere}, DateNote : {this.DateNote}, NoteEleve : {this.NoteEleve}, Appreciation : {this.Appreciation}";
+
+          // booh that's bad
+          //return "NoteId : " + this.NoteId + ", EleveId : " + this.EleveId + ", Matiere : " + this.Matiere + ", DateNote : " + this.DateNote + ", NoteEleve : " + this.NoteEleve + ", Appreciation : " + this.Appreciation;
+        }
+  }
 }

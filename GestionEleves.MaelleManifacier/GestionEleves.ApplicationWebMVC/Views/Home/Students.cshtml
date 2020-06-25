@@ -6,8 +6,8 @@
     <h5 class="titleStudents">@ViewBag.Title.ToUpper()</h5>
     <div class="containerSearchStudents">
       <form asp-controller="Home" asp-action="Students">
-        <input type="text" name="searchString"/>
-        <input type="submit" value="search"/>
+        <input class="searchStudentsText" type="text" name="searchString"/>
+        <input class="searchStudentsButton" type="submit" value="search"/>
       </form>
     </div>
     <div class="containerAddStudent">

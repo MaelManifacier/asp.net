@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace GestionEleves.DAL.Entites
 {
@@ -18,6 +19,7 @@ namespace GestionEleves.DAL.Entites
         [StringLength(20)]
         public string Prenom { get; set; }
 
+        //[Column(TypeName="datetime2")]
         public DateTime DateNaissance { get; set; }
 
         [Required]

@@ -67,6 +67,14 @@ footer {
     font-weight: 300;
     letter-spacing: .3em;
 }
+@media screen and (max-width: 8in) {
+  .trait {
+    width: 10vw;
+  }
+  .titreAccueil {
+    font-size: 16px;
+  }
+}
 
 
 /* - - - Contenu - - - */
@@ -85,20 +93,19 @@ footer {
 .partieGauche {
     display: inline-flex ;
     flex-direction: column;
+    justify-content: center;
 }
 .cardAccueil {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 15vw;
-    min-width: 10vw;
-    height: 10vh;
-    background-color: #393E41;
-    color: #47D890;
-    margin: 1vh .2vw;
-    -webkit-box-shadow: 6px 4px 6px 0px rgba(237,234,237,1);
-    -moz-box-shadow: 6px 4px 6px 0px rgba(237,234,237,1);
-    box-shadow: 4px 3px 6px 0px rgba(237,234,237,1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1em 2em;
+  background-color: #393E41;
+  color: #47D890;
+  margin: 1vh 2vw;
+  -webkit-box-shadow: 6px 4px 6px 0px rgba(237,234,237,1);
+  -moz-box-shadow: 6px 4px 6px 0px rgba(237,234,237,1);
+  box-shadow: 4px 3px 6px 0px rgba(237,234,237,1);
 }
 .cardAccueil:hover {
     background-color: #616669;
@@ -112,16 +119,25 @@ footer {
 }
 
 .partieDroite {
-    min-width: 70vw;
-    min-height: 60vh;
-    padding: 1vh 1vw;
-    border: 1px solid #707070;
-    overflow: scroll;
+  min-width: 70vw;
+  min-height: 60vh;
+  padding: 1vh 1vw;
+  border: 1px solid #707070;
+  overflow: scroll;
+  background-color: #393E41;
+  color: #47D890;
+}
+.partieDroite .cardEleve {
+  background-color: #F9F9F9;
+  color: black;
 }
 
 
 @media screen and (max-width:8in) {
     .containerContenu {
         flex-direction: column;
+    }
+    .partieGauche {
+      flex-direction: row;
     }
 }

@@ -1,4 +1,5 @@
 ﻿using GestionEleves.DAL;
+using GestionEleves.DAL.Entites;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +19,17 @@ namespace GestionEleves.BusinessLayer.Query
 		}
 
 		#endregion
+
+		public List<Classe> getAll()
+		{
+			List<Classe> classe = _contexte.Classes.ToList();
+			/*
+			classe.ForEach(c =>
+			{
+				_contexte.Eleves.ToDictionary(c.ClassId, _contexte.Eleves.Select(e => e.ClassId == c.ClassId));
+			});*/
+			return classe;
+		}
 
 
 	}

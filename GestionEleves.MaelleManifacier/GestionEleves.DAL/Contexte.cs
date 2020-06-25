@@ -16,6 +16,7 @@ namespace GestionEleves.DAL
         public DbSet<Eleve> Eleves { get; set; }
 
         public DbSet<Note> Notes { get; set; }
+        public DbSet<Absence> Absences { get; set; }
 
         public Contexte() : base("name=ConnexionString")
         {

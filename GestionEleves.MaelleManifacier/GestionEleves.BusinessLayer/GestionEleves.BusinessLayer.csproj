@@ -123,6 +123,7 @@
   <ItemGroup>
     <Compile Include="BusinessManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Query\AbsenceQuery.cs" />
     <Compile Include="Query\ClasseQuery.cs" />
     <Compile Include="Query\EleveQuery.cs" />
     <Compile Include="Query\NoteQuery.cs" />

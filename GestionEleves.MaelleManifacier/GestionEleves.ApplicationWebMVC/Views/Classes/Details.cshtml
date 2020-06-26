@@ -1,0 +1,59 @@
+﻿@model IEnumerable<GestionEleves.ApplicationWebMVC.Models.EleveViewModel>
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<hr/>
+<table class="table">
+    <tr style="color: whitesmoke">
+        <th>
+            @Html.DisplayNameFor(model => model.Nom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Prenom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Moyenne)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ClassId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateNaissance)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr style="color: whitesmoke">
+        <td>
+            @Html.DisplayFor(modelItem => item.Nom)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Prenom)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Moyenne)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ClassId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateNaissance)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "/Students/Edit", new { id=item.EleveId }) |
+            @Html.ActionLink("Details", "/Students/Details", new { id=item.EleveId }) |
+            @Html.ActionLink("Delete", "Delete", "Student", new { id=item.EleveId }, null)
+        </td>
+    </tr>
+}
+
+</table>
+
+<div class="containerBtnBack">
+  @Html.ActionLink("Back to List", "Index")
+</div>

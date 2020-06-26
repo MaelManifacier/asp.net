@@ -10,23 +10,27 @@ namespace GestionEleves.BusinessLayer.Query
 {
     internal class NoteQuery
     {
-        private Contexte _contexte;
+		#region "Instanciation"
+		private Contexte _contexte;
 
         public NoteQuery(Contexte contexte)
         {
             _contexte = contexte;
         }
 
-        public List<Note> GetNotesByEleve(int EleveID)
-        {
-            return _contexte.Notes.Where(n => n.EleveId == EleveID).ToList();
-        }
+		#endregion
 
-        public void AddNote(Note n)
-        {
-          _contexte.Notes.Add(n);
-          _contexte.SaveChanges();
-        }
+
+		public List<Note> GetNotesByEleve(int EleveID)
+    {
+        return _contexte.Notes.Where(n => n.EleveId == EleveID).ToList();
+    }
+
+    public void AddNote(Note n)
+    {
+      _contexte.Notes.Add(n);
+      _contexte.SaveChanges();
+    }
 
 
   }

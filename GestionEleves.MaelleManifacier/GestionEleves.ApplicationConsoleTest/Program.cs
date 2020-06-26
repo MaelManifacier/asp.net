@@ -14,35 +14,43 @@ namespace GestionEleves.ApplicationConsoleTest
         {
           BusinessManager bm = BusinessManager.GetInstance();
 
-          //ajoutEleve(bm);
+          //AjoutEleve(bm);
 
-          listerEleves(bm);
+          ListerEleves(bm);
 
-          if (getEleve(bm, 10) != null)
+          if (GetEleve(bm, 10) != null)
           {
-            deleteEleve(bm, 10);
-            listerEleves(bm);
+            DeleteEleve(bm, 10);
+            ListerEleves(bm);
           }
 
           /*
           int numEleve = 4;
-          if (getEleve(bm, numEleve) != null)
+          if (GetEleve(bm, numEleve) != null)
           {
-            createAndAddNoteForEleveId(bm, numEleve);
-            addNote(bm, numEleve, "DotNet", "plein de jolis tests", 15);
-            afficherNotesEleve(bm, numEleve);
+            CreateAndAddNoteForEleveId(bm, numEleve);
+            AddNote(bm, numEleve, "DotNet", "plein de jolis tests", 15);
+            AfficherNotesEleve(bm, numEleve);
           }
           */
+
+          if (GetEleve(bm, 2) != null)
+          {
+            AjoutAbsence(bm, 2);
+            ListerEleves(bm);
+          }
 
           List<Eleve> eleves = bm.GetEleves();
           foreach (Eleve eleve in eleves)
           {
             List<Note> notesEleve = bm.GetNotesByEleve(eleve.EleveId);
+            List<Absence> absencesEleve = bm.GetAbsenceByEleveId(eleve.EleveId);
+
             foreach (var note in notesEleve)
             {
               Console.WriteLine(note);
             }
-            if (notesEleve != null)
+            if (notesEleve != null && notesEleve.Count > 0)
             {
               Console.WriteLine(notesEleve);
               Console.WriteLine($"notesEleves != null, EleveId = {eleve.EleveId}");
@@ -61,7 +69,7 @@ namespace GestionEleves.ApplicationConsoleTest
 
         }
 
-        public static void ajoutEleve(BusinessManager bm)
+        public static void AjoutEleve(BusinessManager bm)
         {
           Eleve e = new Eleve { Nom = "YouThere", Prenom = "Hey", ClassId = 1, DateNaissance = DateTime.Now };
           bm.AddEleve(e);
@@ -79,7 +87,7 @@ namespace GestionEleves.ApplicationConsoleTest
           bm.AddEleve(e4);
         }
 
-        public static void listerEleves(BusinessManager bm)
+        public static void ListerEleves(BusinessManager bm)
         {
           List<Eleve> eleves = bm.GetEleves();
           Console.WriteLine("- - - Liste des élèves - - -");
@@ -91,17 +99,23 @@ namespace GestionEleves.ApplicationConsoleTest
           Console.WriteLine();
         }
 
-        public static Eleve getEleve(BusinessManager bm, int eleveId)
+        public static void AjoutAbsence(BusinessManager bm, int EleveId)
+        {
+          Absence a = new Absence { DateAbsence = DateTime.Now, EleveId = EleveId, Motif="Flemme" };
+          bm.AddAbsence(a);
+        }
+
+        public static Eleve GetEleve(BusinessManager bm, int eleveId)
         {
           return bm.GetEleve(eleveId);
         }
 
-        public static void deleteEleve(BusinessManager bm, int eleveId)
+        public static void DeleteEleve(BusinessManager bm, int eleveId)
         {
           bm.DeleteEleve(eleveId);
         }
 
-        public static void createAndAddNoteForEleveId(BusinessManager bm, int eleveId)
+        public static void CreateAndAddNoteForEleveId(BusinessManager bm, int eleveId)
         {
           Note n = new Note();
           n.EleveId = eleveId;
@@ -112,7 +126,7 @@ namespace GestionEleves.ApplicationConsoleTest
           bm.AddNote(n);
         }
 
-        public static void addNote(BusinessManager bm, int eleveId, string matiere, string appreciation, int noteEleve)
+        public static void AddNote(BusinessManager bm, int eleveId, string matiere, string appreciation, int noteEleve)
         {
           Note n = new Note();
           n.EleveId = eleveId;
@@ -123,7 +137,7 @@ namespace GestionEleves.ApplicationConsoleTest
           bm.AddNote(n);
         }
 
-        public static void afficherNotesEleve(BusinessManager bm, int eleveId)
+        public static void AfficherNotesEleve(BusinessManager bm, int eleveId)
         {
           List<Note> notes = bm.GetNotesByEleve(eleveId);
           Console.WriteLine("- - - Liste des notes de l'élève " + eleveId + " - - -");

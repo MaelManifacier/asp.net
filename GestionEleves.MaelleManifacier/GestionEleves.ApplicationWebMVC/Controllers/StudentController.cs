@@ -39,5 +39,13 @@ namespace GestionEleves.ApplicationWebMVC.Controllers
 
           return View("AddStudent");
         }
+
+    public ActionResult Delete(int id)
+    {
+      BusinessManager bm = BusinessManager.GetInstance();
+      bm.DeleteEleve(id);
+
+      return Redirect("/Classes/Index");
+    }
   }
 }

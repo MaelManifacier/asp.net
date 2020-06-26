@@ -2,6 +2,10 @@
   color: whitesmoke
 }
 
+.title {
+  font-weight: 300;
+}
+
 /* - - - Titre - - - */
 .divTitreStudent {
     display: inline-block;

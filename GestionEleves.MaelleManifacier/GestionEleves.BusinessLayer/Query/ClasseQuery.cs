@@ -12,15 +12,15 @@ namespace GestionEleves.BusinessLayer.Query
 	{
 		#region "Instanciation"
 
-		private Contexte _contexte;
-		public ClasseQuery()
+		private readonly Contexte _contexte;
+		public ClasseQuery(Contexte contexte)
 		{
-			this._contexte = new Contexte();
+			this._contexte = contexte;
 		}
 
 		#endregion
 
-		public List<Classe> getAll()
+		public List<Classe> GetAll()
 		{
 			List<Classe> classe = _contexte.Classes.ToList();
 			/*
@@ -29,6 +29,47 @@ namespace GestionEleves.BusinessLayer.Query
 				_contexte.Eleves.ToDictionary(c.ClassId, _contexte.Eleves.Select(e => e.ClassId == c.ClassId));
 			});*/
 			return classe;
+		}
+
+		public Classe GetClasse(int classId)
+		{
+			return _contexte.Classes.FirstOrDefault(c => c.ClassId == classId);
+		}
+
+		public Dictionary<int, Eleve> GetElevesByClasses()
+		{
+			Dictionary<int, Eleve> elevesDict = new Dictionary<int, Eleve>();
+			elevesDict = _contexte.Eleves.ToDictionary(e => e.ClassId);
+			return elevesDict;
+		}
+
+		public void AddClasse(Classe classe)
+		{
+			_contexte.Classes.Add(classe);
+			_contexte.SaveChanges();
+		}
+
+		public Classe DeleteClasse(int ClassId)
+		{
+			Classe classe = _contexte.Classes.FirstOrDefault(c => c.ClassId == ClassId);
+			if(classe != null)
+			{
+				_contexte.Classes.Remove(classe);
+				_contexte.SaveChanges();
+			}
+			return classe;
+		}
+
+		public Classe UpdateClasse(Classe classe)
+		{
+			Classe aModifier = _contexte.Classes.FirstOrDefault(c => c.ClassId == classe.ClassId);
+			if(aModifier != null)
+			{
+				aModifier.Niveau = classe.Niveau;
+				aModifier.NomEtablissement = classe.NomEtablissement;
+			}
+
+			return aModifier;
 		}
 
 

@@ -47,6 +47,8 @@ namespace GestionEleves.ApplicationWebMVC.Controllers
       foreach (var eleve in Eleves)
       {
         List<Note> notesEleve = bm.GetNotesByEleve(eleve.EleveId);
+        List<Absence> absencesEleve = bm.GetAbsenceByEleveId(eleve.EleveId);
+
         foreach (var note in notesEleve)
         {
           notesViewModelEleve.Add(new NoteViewModel { NoteId = note.NoteId, EleveId = eleve.EleveId, Matiere = note.Matiere, NoteEleve = note.NoteEleve, Appreciation = note.Appreciation, DateNote = note.DateNote });
@@ -101,13 +103,6 @@ namespace GestionEleves.ApplicationWebMVC.Controllers
         Students.Add(new EleveViewModel { Nom = "Rouana", Prenom = "Marie", ClassId = 1 });
     }
 		#endregion
-
-        public ActionResult Classes()
-        {
-            ViewBag.Message = "classes list";
-
-            return View();
-        }
 
     }
 }

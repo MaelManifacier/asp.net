@@ -18,10 +18,26 @@ textarea {
     max-width: 280px;
 }*/
 
-
-body {
-    background-color: #F9F9F9;
+.form-control {
+  border-radius: 2px;
 }
+
+.containerBtnBack {
+  margin: 4vh 2vw;
+}
+.containerBtnBack a {
+  padding: .5em;
+  border: 1px solid whitesmoke;
+}
+  .containerBtnBack a:hover {
+    color: whitesmoke;
+    text-decoration: none;
+    background-color: #5c6163;
+  }
+
+  body {
+    background-color: #F9F9F9;
+  }
 footer {
     margin: 0 auto;
     max-width: 90vw;
@@ -124,6 +140,7 @@ footer {
   padding: 1vh 1vw;
   border: 1px solid #707070;
   overflow: scroll;
+  overflow-x: hidden;
   background-color: #393E41;
   color: #47D890;
 }

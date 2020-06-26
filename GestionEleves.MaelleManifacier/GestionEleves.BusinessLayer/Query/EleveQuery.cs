@@ -11,7 +11,7 @@ namespace GestionEleves.BusinessLayer.Query
     internal class EleveQuery
     {
         #region "Instanciation"
-        private Contexte _contexte;
+        private readonly Contexte _contexte;
 
         public EleveQuery(Contexte contexte)
         {
@@ -55,10 +55,24 @@ namespace GestionEleves.BusinessLayer.Query
             Eleve aModifier = (Eleve) from e in _contexte.Eleves
                               where e.EleveId == eleve.EleveId
                               select e;
-            Eleve eleveAModifier = _contexte.Eleves.FirstOrDefault(e => e.EleveId == eleve.EleveId);
-
-            return eleveAModifier;
+            //Eleve eleveAModifier = _contexte.Eleves.FirstOrDefault(e => e.EleveId == eleve.EleveId);
+            if(aModifier != null)
+            {
+              aModifier.DateNaissance = eleve.DateNaissance;
+              aModifier.ClassId = eleve.ClassId;
+              aModifier.Nom = eleve.Nom;
+              aModifier.Prenom = eleve.Prenom;
+              _contexte.SaveChanges();
+            }
+            
+            return aModifier;
         }
+
+        public List<Eleve> GetEleveForClasse(int Classid)
+        {
+          return _contexte.Eleves.Where(e => e.ClassId == Classid).ToList();
+        }
+
         #endregion
 
     public List<Eleve> SearchEleve(String searchString)

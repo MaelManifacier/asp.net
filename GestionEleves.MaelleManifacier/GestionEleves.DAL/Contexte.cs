@@ -30,5 +30,6 @@ namespace GestionEleves.DAL
             // modelBuilder.Configurations.Add(new ClasseMapping());
             modelBuilder.Configurations.AddFromAssembly(Assembly.GetExecutingAssembly());
         }
-    }
+
+  }
 }

@@ -455,10 +455,10 @@ C:\Users\m.manifacier\Desktop\DotNet\asp.net\GestionEleves.MaelleManifacier\Gest
 C:\Users\m.manifacier\Desktop\DotNet\asp.net\GestionEleves.MaelleManifacier\GestionEleves.DAL\bin\Debug\System.Numerics.Vectors.xml
 C:\Users\m.manifacier\Desktop\DotNet\asp.net\GestionEleves.MaelleManifacier\GestionEleves.DAL\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 C:\Users\m.manifacier\Desktop\DotNet\asp.net\GestionEleves.MaelleManifacier\GestionEleves.DAL\bin\Debug\System.Threading.Tasks.Extensions.xml
-C:\Users\m.manifacier\Desktop\DotNet\asp.net\GestionEleves.MaelleManifacier\GestionEleves.DAL\obj\Debug\GestionEleves.DAL.csprojAssemblyReference.cache
 C:\Users\m.manifacier\Desktop\DotNet\asp.net\GestionEleves.MaelleManifacier\GestionEleves.DAL\obj\Debug\GestionEleves.DAL.csproj.CopyComplete
 C:\Users\m.manifacier\Desktop\DotNet\asp.net\GestionEleves.MaelleManifacier\GestionEleves.DAL\obj\Debug\GestionEleves.DAL.dll
 C:\Users\m.manifacier\Desktop\DotNet\asp.net\GestionEleves.MaelleManifacier\GestionEleves.DAL\obj\Debug\GestionEleves.DAL.pdb
 C:\Users\m.manifacier\Desktop\DotNet\asp.net\GestionEleves.MaelleManifacier\GestionEleves.DAL\bin\Debug\GestionEleves.DAL.dll.config
 C:\Users\m.manifacier\Desktop\DotNet\asp.net\GestionEleves.MaelleManifacier\GestionEleves.DAL\bin\Debug\GestionEleves.DAL.dll
 C:\Users\m.manifacier\Desktop\DotNet\asp.net\GestionEleves.MaelleManifacier\GestionEleves.DAL\bin\Debug\GestionEleves.DAL.pdb
+C:\Users\m.manifacier\Desktop\DotNet\asp.net\GestionEleves.MaelleManifacier\GestionEleves.DAL\obj\Debug\GestionEleves.DAL.csprojAssemblyReference.cache

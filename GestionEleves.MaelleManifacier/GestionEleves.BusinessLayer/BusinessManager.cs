@@ -49,16 +49,16 @@ namespace GestionEleves.BusinessLayer
           return query.GetEleveById(eleveId);
         }
 
-        public void AddEleve(Eleve e)
+        public int AddEleve(Eleve e)
         {
             EleveQuery query = new EleveQuery(_contexte);
-            query.AddEleve(e);
+            return query.AddEleve(e);
         }
 
-        public void DeleteEleve(int EleveID)
+        public Eleve DeleteEleve(int EleveID)
         {
             EleveQuery query = new EleveQuery(_contexte);
-            query.DeleteEleve(EleveID);
+            return query.DeleteEleve(EleveID);
         }
         public Eleve UpdateEleve(Eleve eleve)
         {
@@ -102,10 +102,16 @@ namespace GestionEleves.BusinessLayer
 
     #region "Note"
 
-    public void AddNote(Note n)
+    public int AddNote(Note n)
     {
       NoteQuery query = new NoteQuery(_contexte);
-      query.AddNote(n);
+      return query.AddNote(n);
+    }
+
+    public Note DeleteNote(int noteId)
+    {
+      NoteQuery query = new NoteQuery(_contexte);
+      return query.DeleteNote(noteId);
     }
 
     public List<Note> GetNotesByEleve(int EleveID)
@@ -118,10 +124,10 @@ namespace GestionEleves.BusinessLayer
 
     #region "Absences"
 
-    public void AddAbsence(Absence absence)
+    public int AddAbsence(Absence absence)
     {
       AbsenceQuery query = new AbsenceQuery(_contexte);
-      query.AddAbsence(absence);
+      return query.AddAbsence(absence);
     }
 
     public List<Absence> GetAbsenceByEleveId(int EleveId)

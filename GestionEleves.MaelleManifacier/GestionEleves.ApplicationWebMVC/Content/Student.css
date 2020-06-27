@@ -119,8 +119,10 @@
 
 /* - - - Liste des notes - - - */
 .rowNote {
-    display: flex;
-    justify-content: space-around;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-areas: "noteMatiere noteEleve appreciationEleve dateNoteEleve";
+  text-align: center;
 }
 
 

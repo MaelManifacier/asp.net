@@ -31,10 +31,11 @@ namespace GestionEleves.BusinessLayer.Query
             return _contexte.Eleves.FirstOrDefault(e => e.EleveId == eleveId);
         }
 
-        public void AddEleve(Eleve eleve)
+        public int AddEleve(Eleve eleve)
         {
             _contexte.Eleves.Add(eleve);
             _contexte.SaveChanges();
+            return eleve.EleveId;
         }
 
         public Eleve DeleteEleve(int EleveId)

@@ -30,9 +30,10 @@ namespace GestionEleves.ApplicationWebMVC.Controllers
             // récupération du BusinessManager
             BusinessManager bm = BusinessManager.GetInstance();
             GestionEleves.DAL.Entites.Eleve eleve = new DAL.Entites.Eleve { Nom = formData.Nom, Prenom = formData.Prenom, ClassId = formData.ClassId, DateNaissance = formData.DateNaissance };
-            bm.AddEleve(eleve);
+            int eleveId = bm.AddEleve(eleve);
 
-            return Redirect("/Home/Students");
+            string url = $"/Student/Details/{eleveId}";
+            return Redirect(url);
           }
 
           return View("AddStudent");

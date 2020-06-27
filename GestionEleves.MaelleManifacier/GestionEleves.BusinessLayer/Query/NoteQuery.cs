@@ -26,12 +26,22 @@ namespace GestionEleves.BusinessLayer.Query
         return _contexte.Notes.Where(n => n.EleveId == EleveID).ToList();
     }
 
-    public void AddNote(Note n)
+    public int AddNote(Note n)
     {
       _contexte.Notes.Add(n);
       _contexte.SaveChanges();
+      return n.NoteId;
     }
 
-
+    public Note DeleteNote(int noteId)
+    {
+      Note n = _contexte.Notes.FirstOrDefault(note => note.NoteId == noteId);
+      if (n != null)
+      {
+        _contexte.Notes.Remove(n);
+        _contexte.SaveChanges();
+      }
+      return n;
+    }
   }
 }

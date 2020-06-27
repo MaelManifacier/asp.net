@@ -25,10 +25,11 @@ namespace GestionEleves.BusinessLayer.Query
 			return _contexte.Absences.Where(a => a.EleveId == EleveId).ToList();
 		}
 
-		public void AddAbsence(Absence a)
+		public int AddAbsence(Absence a)
 		{
 			_contexte.Absences.Add(a);
 			_contexte.SaveChanges();
+			return a.AbsenceId;
 		}
 
 		public Absence DeleteAbsence(int absenceId)

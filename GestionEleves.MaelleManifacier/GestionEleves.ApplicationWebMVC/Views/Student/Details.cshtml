@@ -17,7 +17,7 @@
 <div>
     <hr />
     <div>
-      <div class="row1CardEleve">
+      <div class="row1CardEleve" style="color: whitesmoke">
         <div class="leftCard">
           <p>@Model.Nom.ToUpper()</p>
           <p>@Model.Prenom.ToUpper()</p>
@@ -34,17 +34,17 @@
 
       <hr style="background-color: #5c6163"/>
       <div class="listNotesCard">
-        <h5 class="title">Notes :</h5>
+        <h5 class="title" style="color: whitesmoke">Notes :</h5>
         @{
           if (Model.Notes != null)
           {
             foreach (var note in Model.Notes)
             {
               <div class="rowNote">
-                <p>@note.Matiere</p>
-                <p>@note.NoteEleve</p>
-                <p>@note.Appreciation</p>
-                <p>@note.DateNote.ToString("dd MMM yyyy")</p>
+                <p class="noteMatiere">@note.Matiere</p>
+                <p class="noteEleve">@note.NoteEleve</p>
+                <p class="appreciationEleve">@note.Appreciation</p>
+                <p class="dateNoteEleve">@note.DateNote.ToString("dd MMM yyyy")</p>
               </div>
             }
           }
@@ -57,7 +57,7 @@
 
       <hr style="background-color: #5c6163"/>
       <div class="listNotesCard">
-        <h5 class="title">Absences :</h5>
+        <h5 class="title" style="color: whitesmoke">Absences :</h5>
         @{
           if (Model.Absences != null)
           {

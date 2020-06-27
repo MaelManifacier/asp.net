@@ -16,7 +16,7 @@ namespace GestionEleves.BusinessLayer
         public static BusinessManager _instance;
 
         // contexte
-        private Contexte _contexte;
+        private readonly Contexte _contexte;
 
         private BusinessManager()
         {
@@ -63,7 +63,11 @@ namespace GestionEleves.BusinessLayer
         public Eleve UpdateEleve(Eleve eleve)
         {
           EleveQuery query = new EleveQuery(_contexte);
-          return query.UpdateEleve(eleve);
+          if(query.GetEleveById(eleve.EleveId) != null)
+          {
+            return query.UpdateEleve(eleve);
+          }
+          return null;
         }
 
         public List<Eleve> GetElevesForClasse(int ClassId)
@@ -72,15 +76,24 @@ namespace GestionEleves.BusinessLayer
           return query.GetEleveForClasse(ClassId);
         }
 
+        public double GetMoyenne(int EleveId)
+        {
+          List<Note> notes = GetNotesByEleve(EleveId);
+          if(notes != null && notes.Count > 0)
+          {
+            return notes.Average(n => n.NoteEleve);
+          }
+          return 0.0;
+        }
+
     #endregion
 
       #region "SearchEleve"
 
       public List<Eleve> SearchEleve(String searchString)
       {
-      List<Eleve> Eleves = new List<Eleve>();
       EleveQuery query = new EleveQuery(_contexte);
-      Eleves = query.SearchEleve(searchString);
+      List<Eleve> Eleves = query.SearchEleve(searchString);
 
       return Eleves;
       }

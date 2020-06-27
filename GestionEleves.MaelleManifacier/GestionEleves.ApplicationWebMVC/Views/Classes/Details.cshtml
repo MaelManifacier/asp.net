@@ -4,7 +4,7 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h2>Details Classes</h2>
 
 <hr/>
 <table class="table">
@@ -45,8 +45,8 @@
             @Html.DisplayFor(modelItem => item.DateNaissance)
         </td>
         <td>
-            @Html.ActionLink("Edit", "/Students/Edit", new { id=item.EleveId }) |
-            @Html.ActionLink("Details", "/Students/Details", new { id=item.EleveId }) |
+            @Html.ActionLink("Edit", "Edit", "Student", new { id=item.EleveId }, null) |
+            @Html.ActionLink("Details", "Details", "Student", new { id=item.EleveId }, null) |
             @Html.ActionLink("Delete", "Delete", "Student", new { id=item.EleveId }, null)
         </td>
     </tr>

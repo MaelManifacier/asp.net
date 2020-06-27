@@ -1,5 +1,32 @@
-﻿@{
-    ViewBag.Title = "Home Page";
+﻿@model IEnumerable<GestionEleves.ApplicationWebMVC.Models.EleveViewModel>
+
+@{
+  ViewBag.Title = "Home Page";
 }
 
-AH QUE COUCOU BOB
+
+  <div>
+    <h4 class="title">The five best students</h4>
+    <hr/>
+
+    <div>
+      @foreach (var item in Model)
+      {
+        <div class="row1CardEleve">
+          <div class="leftCard">
+            <p>@item.Nom.ToUpper()</p>
+            <p>@item.Prenom.ToUpper()</p>
+          </div>
+          <div class="rightCard">
+            @if (item.Moyenne > 0.0)
+						{
+              <div><span>Moyenne : </span>@item.Moyenne</div>
+						}
+            <div>@item.DateNaissance.ToString("dd MMM yyyy")</div>
+            <div><span>Classe : </span>@item.ClassId</div>
+          </div>
+        </div>
+			}
+      </div>
+
+  </div>

@@ -66,6 +66,11 @@ namespace GestionEleves.ApplicationWebMVC.Controllers
       List<EleveViewModel> elevesViewModel = new List<EleveViewModel>();
       eleves.ForEach(eleve =>
       {
+        double moyenne = bm.GetMoyenne(eleve.EleveId);
+        if(moyenne > 0.0)
+        {
+          elevesViewModel.Add(new EleveViewModel { ClassId = eleve.ClassId, DateNaissance = eleve.DateNaissance, EleveId = eleve.EleveId, Nom = eleve.Nom, Prenom = eleve.Prenom, Moyenne = moyenne });
+        }
         elevesViewModel.Add(new EleveViewModel { ClassId = eleve.ClassId, DateNaissance = eleve.DateNaissance, EleveId = eleve.EleveId, Nom = eleve.Nom, Prenom = eleve.Prenom });
       });
 

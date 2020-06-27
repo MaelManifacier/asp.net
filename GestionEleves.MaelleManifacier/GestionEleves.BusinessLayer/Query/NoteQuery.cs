@@ -11,7 +11,7 @@ namespace GestionEleves.BusinessLayer.Query
     internal class NoteQuery
     {
 		#region "Instanciation"
-		private Contexte _contexte;
+		private readonly Contexte _contexte;
 
         public NoteQuery(Contexte contexte)
         {

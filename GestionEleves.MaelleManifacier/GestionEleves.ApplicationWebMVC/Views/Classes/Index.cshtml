@@ -5,7 +5,7 @@
 }
 
 <div class="titreClasses">
-  <h4 class="titre">Classes</h4>
+  <h4 class="title">Classes</h4>
   <a class="addStudent" href="/Classes/Create">
     <div class="vTrait"></div>
     <div class="hTrait"></div>
@@ -38,7 +38,6 @@
         @Html.DisplayFor(modelItem => item.Niveau)
       </td>
       <td>
-        @Html.ActionLink("Edit", "Edit", new { id = item.ClassId }) |
         @Html.ActionLink("Details", "Details", new { id = item.ClassId }) |
         @Html.ActionLink("Delete", "Delete", new { id = item.ClassId })
       </td>

@@ -13,6 +13,32 @@ namespace GestionEleves.ApplicationWebMVC.Controllers
     {
         public ActionResult Index()
         {
+          BusinessManager bm = BusinessManager.GetInstance();
+          Dictionary<int, double> listEleves = new Dictionary<int, double>();
+          List<Eleve> eleves = bm.GetEleves();
+          eleves.ForEach(eleve =>
+          {
+            List<Note> notesEleve = bm.GetNotesByEleve(eleve.EleveId);
+            double moyenne = 0.0;
+            if (notesEleve != null && notesEleve.Count > 0)
+            {
+              moyenne = notesEleve.Average(n => n.NoteEleve);
+            }
+            listEleves.Add(eleve.EleveId, moyenne);
+          });
+
+          List<EleveViewModel> elevesViewModel = new List<EleveViewModel>();
+          var sortedList = listEleves.ToList();
+          sortedList.Sort((x, y) => y.Value.CompareTo(x.Value));
+
+          for (int i = 0; i < 5; i++)
+          {
+            Eleve e = bm.GetEleve(sortedList[i].Key);
+            elevesViewModel.Add(new EleveViewModel { Nom = e.Nom, Prenom = e.Prenom, DateNaissance = e.DateNaissance, Moyenne = sortedList[i].Value });
+          }
+          
+
+          ViewData.Model = elevesViewModel;
           return View();
         }
 
@@ -30,16 +56,16 @@ namespace GestionEleves.ApplicationWebMVC.Controllers
             Eleves = bm.GetEleves();
           }
 
-          List<EleveViewModel> elevesViewModel = getNotesElevesWithEleveList(bm, Eleves);
+          List<EleveViewModel> elevesViewModel = GetNotesElevesWithEleveList(bm, Eleves);
 
             // set de ViewBag à la vue
             ViewBag.Message = "student list";
-            ViewBag.Students = elevesViewModel;
+            ViewData.Model = elevesViewModel;
 
             return View();
         }
 
-    public static List<EleveViewModel> getNotesElevesWithEleveList(BusinessManager bm, List<Eleve> Eleves)
+    public static List<EleveViewModel> GetNotesElevesWithEleveList(BusinessManager bm, List<Eleve> Eleves)
     {
       // conversion des eleves en EleveViewModel
       List<EleveViewModel> elevesViewModels = new List<EleveViewModel>();
@@ -55,11 +81,12 @@ namespace GestionEleves.ApplicationWebMVC.Controllers
         }
         if (notesEleve != null && notesEleve.Count > 0)
         {
-          elevesViewModels.Add(new EleveViewModel { Nom = eleve.Nom, Prenom = eleve.Prenom, ClassId = eleve.ClassId, DateNaissance = eleve.DateNaissance, Notes = notesViewModelEleve });
+          double moyenne = notesEleve.Average(n => n.NoteEleve);
+          elevesViewModels.Add(new EleveViewModel { EleveId = eleve.EleveId, Nom = eleve.Nom, Prenom = eleve.Prenom, ClassId = eleve.ClassId, DateNaissance = eleve.DateNaissance, Notes = notesViewModelEleve, Moyenne = moyenne });
         }
         else
         {
-          elevesViewModels.Add(new EleveViewModel { Nom = eleve.Nom, Prenom = eleve.Prenom, ClassId = eleve.ClassId, DateNaissance = eleve.DateNaissance });
+          elevesViewModels.Add(new EleveViewModel { EleveId = eleve.EleveId, Nom = eleve.Nom, Prenom = eleve.Prenom, ClassId = eleve.ClassId, DateNaissance = eleve.DateNaissance });
         }
       }
 
@@ -67,7 +94,7 @@ namespace GestionEleves.ApplicationWebMVC.Controllers
     }
 
 		#region "Mocks"
-		public static void createMocks(BusinessManager bm)
+		public static void CreateMocks(BusinessManager bm)
     {
       Eleve e = new Eleve { Nom = "YouThere", Prenom = "Hey", ClassId = 1, DateNaissance = DateTime.Now };
       bm.AddEleve(e);
@@ -84,16 +111,11 @@ namespace GestionEleves.ApplicationWebMVC.Controllers
       Eleve e4 = new Eleve { Nom = "Terieur", Prenom = "Alex", ClassId = 1, DateNaissance = DateTime.Now };
       bm.AddEleve(e4);
 
-      Note n = new Note();
-      n.EleveId = 4;
-      n.Matiere = "Maths";
-      n.DateNote = DateTime.Now;
-      n.Appreciation = "not too bad";
-      n.NoteEleve = 15;
+      Note n = new Note { EleveId = 4, Matiere = "Maths", DateNote = DateTime.Now, Appreciation = "not too bad", NoteEleve = 15 };
       bm.AddNote(n);
     }
 
-    public static void mocksSansBDD()
+    public static void MocksSansBDD()
     {
         // MOCK d'eleves
         List<NoteViewModel> notes = new List<NoteViewModel>();

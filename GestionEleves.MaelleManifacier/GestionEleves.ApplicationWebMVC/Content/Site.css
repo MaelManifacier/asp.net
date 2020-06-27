@@ -29,15 +29,15 @@ textarea {
   padding: .5em;
   border: 1px solid whitesmoke;
 }
-  .containerBtnBack a:hover {
-    color: whitesmoke;
-    text-decoration: none;
-    background-color: #5c6163;
-  }
+.containerBtnBack a:hover {
+  color: whitesmoke;
+  text-decoration: none;
+  background-color: #5c6163;
+}
 
-  body {
-    background-color: #F9F9F9;
-  }
+body {
+  background-color: #F9F9F9;
+}
 footer {
     margin: 0 auto;
     max-width: 90vw;
@@ -60,8 +60,9 @@ footer {
 .titreNavBar {
     flex: 10;
     color: #44BBA4;
+    margin: 0 2vw;
     font-size: 20px;
-    font-weight: 300;
+    font-weight: 500;
 }
 
 
@@ -108,8 +109,8 @@ footer {
 
 .partieGauche {
     display: inline-flex ;
-    flex-direction: column;
-    justify-content: center;
+    align-items: flex-start;
+    flex: 1;
 }
 .cardAccueil {
   display: flex;
@@ -118,7 +119,7 @@ footer {
   padding: 1em 2em;
   background-color: #393E41;
   color: #47D890;
-  margin: 1vh 2vw;
+  margin: 1vh 1vw;
   -webkit-box-shadow: 6px 4px 6px 0px rgba(237,234,237,1);
   -moz-box-shadow: 6px 4px 6px 0px rgba(237,234,237,1);
   box-shadow: 4px 3px 6px 0px rgba(237,234,237,1);
@@ -137,16 +138,15 @@ footer {
 .partieDroite {
   min-width: 70vw;
   min-height: 60vh;
+  max-height: 75vh;
   padding: 1vh 1vw;
+  margin: 0 1vw;
   border: 1px solid #707070;
   overflow: scroll;
   overflow-x: hidden;
   background-color: #393E41;
   color: #47D890;
-}
-.partieDroite .cardEleve {
-  background-color: #F9F9F9;
-  color: black;
+  flex: 5;
 }
 
 

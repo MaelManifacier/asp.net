@@ -1,0 +1,89 @@
+﻿@model GestionEleves.ApplicationWebMVC.Models.EleveViewModel
+
+@{
+    ViewBag.Title = "Detail";
+}
+
+  <div class="titreStudentDetail">
+    <h4 class="title">Detail Student</h4>
+    <div style="display: flex; align-items: center">
+      @Html.ActionLink("Edit", "Edit", new { id = Model.EleveId }) |
+      @Html.ActionLink("Add absence", "CreateAbsence", new { id = Model.EleveId }) |
+      @Html.ActionLink("Add note", "CreateNote", new { id = Model.EleveId }) |
+      @Html.ActionLink("Delete", "Delete", new { id = Model.EleveId })
+    </div>
+  </div>
+
+<div>
+    <hr />
+    <div>
+      <div class="row1CardEleve">
+        <div class="leftCard">
+          <p>@Model.Nom.ToUpper()</p>
+          <p>@Model.Prenom.ToUpper()</p>
+        </div>
+        <div class="rightCard">
+          @if (Model.Moyenne > 0.0)
+          {
+            <div><span>Moyenne : </span>@Model.Moyenne</div>
+          }
+          <div>@Model.DateNaissance.ToString("dd MMM yyyy")</div>
+          <div><span>Classe : </span>@Model.ClassId</div>
+        </div>
+      </div>
+
+      <hr style="background-color: #5c6163"/>
+      <div class="listNotesCard">
+        <h5 class="title">Notes :</h5>
+        @{
+          if (Model.Notes != null)
+          {
+            foreach (var note in Model.Notes)
+            {
+              <div class="rowNote">
+                <p>@note.Matiere</p>
+                <p>@note.NoteEleve</p>
+                <p>@note.Appreciation</p>
+                <p>@note.DateNote.ToString("dd MMM yyyy")</p>
+              </div>
+            }
+          }
+          else
+          {
+            <i>Pas de notes</i>
+          }
+        }
+      </div>
+
+      <hr style="background-color: #5c6163"/>
+      <div class="listNotesCard">
+        <h5 class="title">Absences :</h5>
+        @{
+          if (Model.Absences != null)
+          {
+            foreach (var absence in Model.Absences)
+            {
+                <div class="rowNote">
+                  <p>@absence.Motif</p>
+                  <p>@absence.DateAbsence.ToString("dd MMM yyyy")</p>
+                  <div>
+                    @Html.ActionLink("Edit absence", "EditAbsence", new { id = absence.AbsenceId }) |
+                    @Html.ActionLink("Delete absence", "DeleteAbsence", new { id = absence.AbsenceId })
+                  </div>
+                </div>
+            }
+          }
+          else
+          {
+            <i>Pas d'absences</i>
+          }
+        }
+      </div>
+
+
+    </div>
+</div>
+
+<div class="containerBtnBack">
+  @Html.ActionLink("Back to List", "Details", "Classes", new { id = Model.ClassId }, null)
+</div>

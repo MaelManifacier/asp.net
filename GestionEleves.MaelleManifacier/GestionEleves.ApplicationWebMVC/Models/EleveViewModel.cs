@@ -13,6 +13,7 @@ namespace GestionEleves.ApplicationWebMVC.Models
         public string Nom { get; set; }
         public string Prenom { get; set; }
         public List<NoteViewModel> Notes { get; set; }
+        public List<AbsenceViewModel> Absences { get; set; }
         public double Moyenne { get; set; }
         public int ClassId { get; set; }
 

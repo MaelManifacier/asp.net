@@ -52,10 +52,10 @@ namespace GestionEleves.BusinessLayer.Query
 
         public Eleve UpdateEleve(Eleve eleve)
         {
-            Eleve aModifier = (Eleve) from e in _contexte.Eleves
+            /*Eleve aModifier = (Eleve) from e in _contexte.Eleves
                               where e.EleveId == eleve.EleveId
-                              select e;
-            //Eleve eleveAModifier = _contexte.Eleves.FirstOrDefault(e => e.EleveId == eleve.EleveId);
+                              select e;*/
+            Eleve aModifier = _contexte.Eleves.FirstOrDefault(e => e.EleveId == eleve.EleveId);
             if(aModifier != null)
             {
               aModifier.DateNaissance = eleve.DateNaissance;

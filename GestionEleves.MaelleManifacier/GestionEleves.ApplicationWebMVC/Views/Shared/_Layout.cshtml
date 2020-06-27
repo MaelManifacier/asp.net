@@ -30,7 +30,7 @@
     </div>-->
 
     <div class="navBarAccueil">
-        <div class="menuNavbar">menu</div>
+        <!--<div class="menuNavbar">menu</div>-->
         <div class="titreNavBar">StuMa</div>
     </div>
 
@@ -42,14 +42,14 @@
 
 
     <div class="containerContenu">
-        <div class="partieGauche">
-            <div class="cardAccueil">
-                @Html.ActionLink("STUDENTS", "Students", "Home")
-            </div>
-            <div class="cardAccueil">
-                @Html.ActionLink("CLASSES", "Index", "Classes")
-            </div>
+      <div class="partieGauche">
+        <div class="cardAccueil">
+          @Html.ActionLink("CLASSES", "Index", "Classes")
         </div>
+        <div class="cardAccueil">
+          @Html.ActionLink("STUDENTS", "Students", "Home")
+        </div>
+      </div>
         <div class="partieDroite">
             @RenderBody()
         </div>
